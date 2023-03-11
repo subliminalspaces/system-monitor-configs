@@ -1,0 +1,81 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# Import additional configuration files
+#
+# Imports are loaded in order, skipping all missing files, with the importing
+# file being loaded last. If a field is already present in a previous import, it
+# will be replaced.
+#
+# All imports must either be absolute paths starting with `/`, or paths relative
+# to the user's home directory starting with `~/`.
+import:
+#  - /path/to/alacritty.yml
+  - ~/.config/alacritty/srcery-alacritty.yml
+env:
+  TERM: alacritty
+window:
+  startup_mode: Windowed # Maximized, Fullscreen, (macOS only) SimpleFullscreen
+  title: Alacritty
+  dynamic_title: true
+  class:
+    instance: Alacritty
+  general: Alacritty
+  dimensions:
+    columns: 10
+    lines: 10
+  padding:
+    x: 5
+    y: 0
+  opacity: 0.8
+scrolling:
+  history: 10000
+  multiplier: 5
+font:
+  normal:
+    Default:
+      - (macOS) Menlo
+      - (Linux/BSD) monospace
+      - (Windows) Consolas
+    family: mononoki Nerd Font
+    style: Regular
+  size: 11.0
+  offset:
+    x: 0
+    y: 0
+colors:
+  transparent_background-colors: true  
+selection:
+  # This string contains all characters that are used as separators for
+  # "semantic words" in Alacritty.
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: true
+cursor:
+  style:
+    shape: Beam # Block, Underline
+    blinking: Always # Never, Off, Always
+  blink_interval: 750
+  unfocused_hollow: true
+  thickness: 0.10 # If set, shape defaults to Block
+live_config_reload: true
+shell:
+   program: /usr/bin/zsh
+   args:
+     - -c
+     - "sh /home/abhi/system-monitor/system-monitor.sh"
+     #     program: ubuntu
+# Directory the shell is started in. If this is unset, or `None`, the working
+# directory of the parent process will be used.
+working_directory: None
+ipc_socket: true
+mouse:
+  double_click: { threshold: 300}
+  triple_click: { threshold: 300}
+  hide_when_typing: true
+key_bindings:
+  - { key: Space, mods: Control, chars: "\x00"}
+    #  - { key: Home, chars: "\x1bOH", mode: AppCursor }
+  # - { key: Home, chars: "\x1b[H", mode: ~AppCursor }
+  # - { key: End, chars: "\x1bOF", mode: AppCursor }
+  # - { key: End, chars: "\x1b[F", mode: ~AppCursor }
+  # - { key: PageUp, chars: "\x1b[5~" }
+  # - { key: PageDown, chars: "\x1b[6~" }
